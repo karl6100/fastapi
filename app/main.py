@@ -5,6 +5,10 @@ from .database import engine
 from .routers import post, user, auth, vote
 from fastapi.middleware.cors import CORSMiddleware
 
+from alembic.config import Config
+from alembic import command
+
+
 # models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
@@ -18,6 +22,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+def run_migrations():
+    alembic_cfg = Config("alembic.ini")
+    command.upgrade(alembic_cfg, "head")
+
+# Call this function in the startup section of your app
+run_migrations()
 
 app.include_router(post.router)
 app.include_router(user.router)
