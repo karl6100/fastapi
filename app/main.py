@@ -23,12 +23,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def run_migrations():
-    alembic_cfg = Config("alembic.ini")
-    command.upgrade(alembic_cfg, "head")
+# def run_migrations():
+#     alembic_cfg = Config("alembic.ini")
+#     command.upgrade(alembic_cfg, "head")
 
-# Call this function in the startup section of your app
-run_migrations()
+# # Call this function in the startup section of your app
+# run_migrations()
 
 app.include_router(post.router)
 app.include_router(user.router)
