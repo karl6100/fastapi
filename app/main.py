@@ -5,8 +5,8 @@ from .database import engine
 from .routers import post, user, auth, vote
 from fastapi.middleware.cors import CORSMiddleware
 
-from alembic.config import Config
-from alembic import command
+#from alembic.config import Config
+#from alembic import command
 
 
 # models.Base.metadata.create_all(bind=engine)
